@@ -71,6 +71,7 @@ public class SplashActivity extends BaseActivity<ActivitySplashBinding, SplashVi
                         } else {
                             startActivity(MainActivity.class);
                         }
+                        finish();
                     }
                 });
     }

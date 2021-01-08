@@ -8,6 +8,7 @@ import com.zhao.testmvvm.BR;
 import com.zhao.testmvvm.R;
 import com.zhao.testmvvm.databinding.ActivityMainBinding;
 import com.zhao.testmvvm.http.data.AppViewModelFactory;
+import com.zhao.testmvvm.utils.StatusBarUtil;
 
 import me.goldze.mvvmhabit.base.BaseActivity;
 
@@ -22,6 +23,12 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     @Override
     public int initVariableId() {
         return BR.viewModel;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        StatusBarUtil.setStatusBar(MainActivity.this, true, R.color.white, true);
     }
 
     @Override
