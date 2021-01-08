@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.zhao.testmvvm.source.TestRepository;
 import com.zhao.testmvvm.ui.main.MainViewModel;
+import com.zhao.testmvvm.ui.splash.SplashActivity;
+import com.zhao.testmvvm.ui.splash.SplashViewModel;
 
 /**
  * Created by goldze on 2019/3/26.
@@ -44,7 +46,9 @@ public class AppViewModelFactory extends ViewModelProvider.NewInstanceFactory {
     @NonNull
     @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-        if (modelClass.isAssignableFrom(MainViewModel.class)) {
+        if (modelClass.isAssignableFrom(SplashViewModel.class)) {
+            return (T) new SplashViewModel(mApplication, mRepository);
+        } else if (modelClass.isAssignableFrom(MainViewModel.class)) {
             return (T) new MainViewModel(mApplication, mRepository);
         }
         throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());

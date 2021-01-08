@@ -57,7 +57,7 @@ public class MainViewModel extends BaseViewModel<TestRepository> {
 
                     @Override
                     public void onComplete() {
-                        dismissDialog();
+
                     }
                 });
     }
