@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@mipmap/icon_splash">
+        android:background="@mipmap/icon_home_bg">
 
     </LinearLayout>
 

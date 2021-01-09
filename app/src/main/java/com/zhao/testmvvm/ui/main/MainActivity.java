@@ -18,6 +18,7 @@ import com.zhao.testmvvm.ui.shoppingcart.ShoppingCartFragment;
 import com.zhao.testmvvm.utils.StatusBarUtil;
 
 import me.goldze.mvvmhabit.base.BaseActivity;
+import me.goldze.mvvmhabit.utils.ToastUtils;
 import me.majiajie.pagerbottomtabstrip.NavigationController;
 import me.majiajie.pagerbottomtabstrip.item.BaseTabItem;
 import me.majiajie.pagerbottomtabstrip.item.NormalItemView;
@@ -25,6 +26,8 @@ import me.majiajie.pagerbottomtabstrip.listener.OnTabItemSelectedListener;
 
 
 public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewModel> {
+
+    private long mExitTime;       //实现“再按一次退出”的记录时间变量
 
     @Override
     public int initContentView(Bundle savedInstanceState) {
@@ -39,7 +42,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
     @Override
     protected void onResume() {
         super.onResume();
-        StatusBarUtil.setStatusBar(MainActivity.this, true, R.color.white, true);
+        StatusBarUtil.setStatusBar(MainActivity.this, true, R.color.white, false);
     }
 
     @Override
@@ -47,10 +50,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         super.initData();
         //初始化底部Button
         initBottomTab();
-    }
-
-    private void initFragment() {
-
     }
 
     private void initBottomTab() {
@@ -68,8 +67,6 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
             public void onSelected(int index, int old) {
                 switch (index) {
                     case 0:
-                        StatusBarUtil.setStatusBar(MainActivity.this, true, R.color.white, true);
-                        break;
                     case 1:
                     case 2:
                         StatusBarUtil.setStatusBar(MainActivity.this, true, R.color.white, false);
@@ -126,5 +123,15 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
         //使用自定义的ViewModelFactory来创建ViewModel，如果不重写该方法，则默认会调用LoginViewModel(@NonNull Application application)构造方法
         AppViewModelFactory factory = AppViewModelFactory.getInstance(getApplication());
         return ViewModelProviders.of(this, factory).get(MainViewModel.class);
+    }
+
+    @Override //再按一次退出程序
+    public void onBackPressed() {
+        if (System.currentTimeMillis() - mExitTime < 2000) {
+            super.onBackPressed();
+        } else {
+            mExitTime = System.currentTimeMillis();
+            ToastUtils.showShort("再按一次返回键退出应用");
+        }
     }
 }
