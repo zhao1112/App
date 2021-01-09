@@ -14,13 +14,21 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray">
+        android:orientation="vertical">
 
-        <ImageView
+        <com.zhao.testmvvm.widget.NoTouchViewPager
+            android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorAccent"
-            binding:onClickCommand="@{viewModel.imageOnClickCommand}" />
+            android:layout_weight="1" />
+
+        <me.majiajie.pagerbottomtabstrip.PageNavigationView
+            android:id="@+id/tab"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_56"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:elevation="8dp" />
 
     </LinearLayout>
 

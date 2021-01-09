@@ -24,14 +24,19 @@ import me.goldze.mvvmhabit.utils.ToastUtils;
  */
 public class MainViewModel extends BaseViewModel<TestRepository> {
 
+    private Application application;
+
     public MainViewModel(@NonNull Application application, TestRepository model) {
         super(application, model);
+        this.application = application;
     }
+
+
 
     public BindingCommand imageOnClickCommand = new BindingCommand(new BindingAction() {
         @Override
         public void call() {
-            getDemoGet();
+
         }
     });
 

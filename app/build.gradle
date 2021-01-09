@@ -38,4 +38,6 @@ dependencies {
 
     //mvvm
     implementation project(':mvvmhabit')
+    //底部tabBar
+    implementation 'me.majiajie:pager-bottom-tab-strip:2.3.0X'
 }

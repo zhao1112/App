@@ -9,8 +9,10 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.zhao.testmvvm.source.TestRepository;
+import com.zhao.testmvvm.ui.classification.ClassificationViewModel;
+import com.zhao.testmvvm.ui.home.HomeViewModel;
 import com.zhao.testmvvm.ui.main.MainViewModel;
-import com.zhao.testmvvm.ui.splash.SplashActivity;
+import com.zhao.testmvvm.ui.shoppingcart.ShoppingCartViewModel;
 import com.zhao.testmvvm.ui.splash.SplashViewModel;
 
 /**
@@ -50,6 +52,12 @@ public class AppViewModelFactory extends ViewModelProvider.NewInstanceFactory {
             return (T) new SplashViewModel(mApplication, mRepository);
         } else if (modelClass.isAssignableFrom(MainViewModel.class)) {
             return (T) new MainViewModel(mApplication, mRepository);
+        } else if (modelClass.isAssignableFrom(HomeViewModel.class)) {
+            return (T) new HomeViewModel(mApplication, mRepository);
+        } else if (modelClass.isAssignableFrom(ClassificationViewModel.class)) {
+            return (T) new ClassificationViewModel(mApplication, mRepository);
+        } else if (modelClass.isAssignableFrom(ShoppingCartViewModel.class)) {
+            return (T) new ShoppingCartViewModel(mApplication, mRepository);
         }
         throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
     }
