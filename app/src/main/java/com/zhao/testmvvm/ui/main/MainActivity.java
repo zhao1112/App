@@ -14,6 +14,7 @@ import com.zhao.testmvvm.databinding.ActivityMainBinding;
 import com.zhao.testmvvm.http.data.AppViewModelFactory;
 import com.zhao.testmvvm.ui.classification.ClassificationFragment;
 import com.zhao.testmvvm.ui.home.HomeFragment;
+import com.zhao.testmvvm.ui.mine.MineFragment;
 import com.zhao.testmvvm.ui.shoppingcart.ShoppingCartFragment;
 import com.zhao.testmvvm.utils.StatusBarUtil;
 
@@ -57,6 +58,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
                 .addItem(newItem(R.mipmap.icon_home_false, R.mipmap.icon_home, "首页"))
                 .addItem(newItem(R.mipmap.icon_class_false, R.mipmap.icon_class, "分类"))
                 .addItem(newItem(R.mipmap.icon_cart_false, R.mipmap.icon_cart, "购物车"))
+                .addItem(newItem(R.mipmap.icon_mine, R.mipmap.icon_mine_false, "我的"))
                 .build();
         binding.viewPager.setAdapter(new TestViewPagerAdapter(getSupportFragmentManager(), navigationController.getItemCount()));
         //自动适配ViewPager页面切换
@@ -70,6 +72,9 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
                     case 1:
                     case 2:
                         StatusBarUtil.setStatusBar(MainActivity.this, true, R.color.white, false);
+                        break;
+                    case 3:
+                        StatusBarUtil.setStatusBar(MainActivity.this, true, R.color.white, true);
                         break;
                 }
             }
@@ -108,6 +113,8 @@ public class MainActivity extends BaseActivity<ActivityMainBinding, MainViewMode
                     return new ClassificationFragment();
                 case 2:
                     return new ShoppingCartFragment();
+                case 3:
+                    return new MineFragment();
             }
             return null;
         }

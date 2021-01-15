@@ -11,7 +11,9 @@ import androidx.lifecycle.ViewModelProvider;
 import com.zhao.testmvvm.source.TestRepository;
 import com.zhao.testmvvm.ui.classification.ClassificationViewModel;
 import com.zhao.testmvvm.ui.home.HomeViewModel;
+import com.zhao.testmvvm.ui.home.homepage.HomePageViewModel;
 import com.zhao.testmvvm.ui.main.MainViewModel;
+import com.zhao.testmvvm.ui.mine.MineViewModel;
 import com.zhao.testmvvm.ui.shoppingcart.ShoppingCartViewModel;
 import com.zhao.testmvvm.ui.splash.SplashViewModel;
 
@@ -58,6 +60,10 @@ public class AppViewModelFactory extends ViewModelProvider.NewInstanceFactory {
             return (T) new ClassificationViewModel(mApplication, mRepository);
         } else if (modelClass.isAssignableFrom(ShoppingCartViewModel.class)) {
             return (T) new ShoppingCartViewModel(mApplication, mRepository);
+        } else if (modelClass.isAssignableFrom(MineViewModel.class)) {
+            return (T) new MineViewModel(mApplication, mRepository);
+        } else if (modelClass.isAssignableFrom(HomePageViewModel.class)) {
+            return (T) new HomePageViewModel(mApplication, mRepository);
         }
         throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
     }

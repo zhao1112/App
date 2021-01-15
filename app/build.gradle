@@ -25,6 +25,11 @@ android {
         enabled true
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
@@ -40,4 +45,11 @@ dependencies {
     implementation project(':mvvmhabit')
     //底部tabBar
     implementation 'me.majiajie:pager-bottom-tab-strip:2.3.0X'
+    //跑马灯
+    implementation 'com.sunfusheng:MarqueeView:1.4.1'
+    //XTabLayout
+    implementation 'com.androidkun:XTabLayout:1.1.5'
+    //banner
+    implementation 'com.youth.banner:banner:2.1.0'
+    implementation "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4"
 }

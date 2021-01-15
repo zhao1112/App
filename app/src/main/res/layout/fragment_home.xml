@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -8,11 +9,138 @@
             type="com.zhao.testmvvm.ui.home.HomeViewModel" />
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@mipmap/icon_home_bg">
 
-    </LinearLayout>
+        <RelativeLayout
+            android:id="@+id/search_rl_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_24">
+
+            <RelativeLayout
+                android:id="@+id/search_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_35">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:gravity="center"
+                    android:text="测试"
+                    android:textColor="#fff"
+                    android:textSize="@dimen/sp_17"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/iv_news"
+                    android:layout_width="@dimen/dp_28"
+                    android:layout_height="@dimen/dp_28"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dp_15"
+                    android:src="@mipmap/icon_news" />
+
+                <ImageView
+                    android:id="@+id/iv_code"
+                    android:layout_width="@dimen/dp_28"
+                    android:layout_height="@dimen/dp_28"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:layout_toLeftOf="@id/iv_news"
+                    android:padding="@dimen/dp_3"
+                    android:src="@mipmap/icon_code" />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/search_ll_search"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_35"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:layout_marginTop="@dimen/dp_40"
+                android:layout_marginRight="@dimen/dp_15"
+                android:background="@drawable/item_search"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:src="@mipmap/icon_search" />
+
+                <com.sunfusheng.marqueeview.MarqueeView
+                    android:id="@+id/marqueeView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginTop="@dimen/dp_2"
+                    android:layout_weight="1"
+                    app:mvAnimDuration="1000"
+                    app:mvDirection="bottom_to_top"
+                    app:mvFont="@font/huawenxinwei"
+                    app:mvGravity="left"
+                    app:mvInterval="3000"
+                    app:mvSingleLine="true"
+                    app:mvTextColor="@color/Color_888888"
+                    app:mvTextSize="@dimen/sp_14" />
+
+                <ImageView
+                    android:layout_width="@dimen/dp_25"
+                    android:layout_height="@dimen/dp_25"
+                    android:layout_marginLeft="@dimen/dp_15"
+                    android:layout_marginRight="@dimen/dp_15"
+                    android:src="@mipmap/icon_camera" />
+
+            </LinearLayout>
+
+            <com.androidkun.xtablayout.XTabLayout
+                android:id="@+id/xl_class"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_35"
+                android:layout_below="@id/search_ll_search"
+                app:xTabDisplayNum="10"
+                app:xTabDividerWidthWidthText="true"
+                app:xTabIndicatorColor="@color/Color_FACC31"
+                app:xTabMode="scrollable"
+                app:xTabSelectedTextColor="@color/Color_FACC31"
+                app:xTabSelectedTextSize="@dimen/sp_15"
+                app:xTabTextColor="@color/white"
+                app:xTabTextSize="@dimen/sp_13" />
+
+        </RelativeLayout>
+
+        <com.zhao.testmvvm.widget.AnimationNestedScrollView
+            android:id="@+id/search_sv_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/search_rl_top"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:descendantFocusability="blocksDescendants"
+                android:orientation="vertical">
+
+                <com.zhao.testmvvm.widget.WrapContentHeightViewPager
+                    android:id="@+id/vp_pager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:overScrollMode="never" />
+
+            </LinearLayout>
+
+        </com.zhao.testmvvm.widget.AnimationNestedScrollView>
+
+    </RelativeLayout>
 
 </layout>
